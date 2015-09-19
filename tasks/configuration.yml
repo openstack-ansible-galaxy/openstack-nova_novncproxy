@@ -26,16 +26,16 @@
     # Common settings
     - section:  DEFAULT
       option:   my_ip
-      value:    "{{ my_ip }}"
+      value:    "{{ nova_novncproxy_my_ip }}"
     # Nova novnc
     - section:  DEFAULT
       option:   vnc_enabled
       value:    True
     - section:  DEFAULT
       option:   vncserver_proxyclient_address
-      value:    "{{ vncserver_proxyclient_address }}"
+      value:    "{{ nova_novncproxy_vncserver_proxyclient_address }}"
     - section:  DEFAULT
       option:   novncproxy_base_url
-      value:    "{{ novncproxy_base_url }}"
+      value:    "{{ nova_novncproxy_base_url }}"
   notify:
     - Restart nova novncproxy

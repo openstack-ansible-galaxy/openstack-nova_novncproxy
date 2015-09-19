@@ -18,20 +18,10 @@ Role Variables
 
 | Name | Default value | Description | Note |
 |---  |---  |---  |--- |
-| `my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-novncproxy ||
-| `vncserver_proxyclient_address` | `{{ my_ip }}` | The address to use to connect to the vnc proxy ||
-| `vncserver_proxy_address` | `{{ my_ip }}` | The address to which proxy clients should connect ||
-| `novncproxy_base_url` | `"http://{{ vncserver_proxy_address }}:6080/vnc_auto.html"` | Desired novncproxy base_url ||
-
-
-### RabbitMQ (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
-| `rabbit_hostname` | `localhost` | Hostname/IP address where the RabbitMQ service runs ||
-| `rabbit_username` | `rabbit_username_default` | RabbitMQ username for glance ||
-| `rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for glance. ||
-
+| `nova_novncproxy_my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-novncproxy ||
+| `nova_novncproxy_vncserver_proxyclient_address` | `{{ my_ip }}` | The address to use to connect to the vnc proxy ||
+| `nova_novncproxy_vncserver_proxy_address` | `{{ my_ip }}` | The address to which proxy clients should connect ||
+| `nova_novncproxy_base_url` | `"{{ nova_novncproxy_protocol }}://{{ vncserver_proxy_address }}:{{ nova_novncproxy_port }}/vnc_auto.html"` | Desired novncproxy base_url ||
 
 Dependencies
 ------------
@@ -44,8 +34,6 @@ Example Playbook
     - hosts: console001
       roles:
         - role: openstack-nova_novncproxy
-          rabbit_username: "openstack-nova"
-          rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
 
 ---
 

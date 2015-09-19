@@ -18,14 +18,11 @@
 #
 
 # Common
-my_ip: "{{ ansible_eth0.ipv4.address }}"
+nova_novncproxy_my_ip: "{{ ansible_eth0.ipv4.address }}"
 
 # Nova novncproxy
-vncserver_proxyclient_address: "{{ my_ip }}"
-vncserver_proxy_address: "{{ my_ip }}"
-novncproxy_base_url: "http://{{ vncserver_proxy_address }}:6080/vnc_auto.html"
-
-# RabbitMQ
-rabbit_hostname: localhost
-rabbit_pass: rabbit_pass_default
-rabbit_username: rabbit_username_default
+nova_novncproxy_protocol: http
+nova_novncproxy_port: 443
+nova_novncproxy_vncserver_proxyclient_address: "{{ nova_novncproxy_my_ip }}"
+nova_novncproxy_vncserver_proxy_address: "{{ nova_novncproxy_my_ip }}"
+nova_novncproxy_base_url: "{{ nova_novncproxy_protocol }}://{{ nova_novncproxy_vncserver_proxy_address }}:{{ nova_novncproxy_port }}/vnc_auto.html"
