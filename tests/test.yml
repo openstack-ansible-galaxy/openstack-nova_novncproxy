@@ -5,7 +5,7 @@
   roles:
     - role: openstack-nova_novncproxy
       nova_novncproxy_my_ip: "localhost"
-      nova_novncproxy__proxyclient_address: "localhost"
+      nova_novncproxy_proxyclient_address: "localhost"
       nova_novncproxy_proxy_address: "localhost"
       nova_novncproxy_base_url: "http://localhost:6080/vnc_auto.html"
       tags:
