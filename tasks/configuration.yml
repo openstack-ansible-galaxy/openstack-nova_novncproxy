@@ -37,5 +37,11 @@
     - section:  DEFAULT
       option:   novncproxy_base_url
       value:    "{{ nova_novncproxy_base_url }}"
+    - section:  DEFAULT
+      option:   novncproxy_host
+      value:    "{{ nova_novncproxy_host }}"
+    - section:  DEFAULT
+      option:   novncproxy_port
+      value:    "{{ nova_novncproxy_port }}"
   notify:
     - Restart nova novncproxy

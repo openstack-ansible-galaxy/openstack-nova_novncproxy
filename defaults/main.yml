@@ -21,9 +21,10 @@
 nova_novncproxy_my_ip: "{{ ansible_eth0.ipv4.address }}"
 
 # Nova novncproxy
-nova_novncproxy_protocol: http
 nova_novncproxy_port: 6080
 nova_novncproxy_host: "{{ nova_novncproxy_my_ip }}"
 nova_novncproxy_vncserver_proxyclient_address: "{{ nova_novncproxy_my_ip }}"
 nova_novncproxy_vncserver_proxy_address: "{{ nova_novncproxy_my_ip }}"
-nova_novncproxy_base_url: "{{ nova_novncproxy_protocol }}://{{ nova_novncproxy_vncserver_proxy_address }}:{{ nova_novncproxy_port }}/vnc_auto.html"
+nova_novncproxy_vncserver_proxy_protocol: http
+nova_novncproxy_vncserver_proxy_port: 6080
+nova_novncproxy_base_url: "{{ nova_novncproxy_vncserver_proxy_protocol }}://{{ nova_novncproxy_vncserver_proxy_address }}:{{ nova_novncproxy_vncserver_proxy_port }}/vnc_auto.html"
